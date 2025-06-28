@@ -38,10 +38,14 @@ app.get("/", (req, res) => {
   res.send("hello");
 });
 
+
+app.get("/ping", (req, res) => res.send("pong"));
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 // ✅ Keep-alive pinger for Render free tier
-const BACKEND_URL = "https://expense-tracker-backend-7qo0.onrender.com";
+const BACKEND_URL = "https://expense-tracker-backend-7qo0.onrender.com/ping";
+
 
 function keepServerAwake() {
   https
@@ -52,6 +56,8 @@ function keepServerAwake() {
       console.error("Error with keep-alive ping:", err.message);
     });
 }
+
+
 
 const FOURTEEN_MINUTES = 14 * 60 * 1000;
 
